@@ -19,7 +19,13 @@
 {% endif %}
 
 <!-- Year, Month, Date -->
-{% block canonical_url %}<link href="{{ SITEURL }}/{{ period_num[0] }}/{{ period_num[1] }}" rel="canonical" />{% endblock canonical_url %}
+{% block canonical_url %}
+    {% if NOINDEX_THIN_CONTENT %}
+  <meta name="robots" content="noindex">
+    {% else %}
+  <link href="{{ SITEURL }}/{{ period_num[0] }}/{{ period_num[1] }}" rel="canonical" />
+    {% endif %}
+{% endblock canonical_url %}
 
 {% block header %}
     <!-- Page Header -->

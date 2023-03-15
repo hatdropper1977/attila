@@ -18,7 +18,13 @@
   {% set selected_color = HEADER_COLOR %}
 {% endif %}
 
-{% block canonical_url %}<link href="{{ SITEURL }}/{{ AUTHORS_SAVE_AS }}" rel="canonical" />{% endblock canonical_url %}
+{% block canonical_url %}
+    {% if NOINDEX_THIN_CONTENT %}
+  <meta name="robots" content="noindex">
+    {% else %}
+  <link href="{{ SITEURL }}/{{ AUTHORS_SAVE_AS }}" rel="canonical" />
+    {% endif %}
+{% endblock canonical_url %}
 
 {% block header %}
     <!-- Page Header -->
