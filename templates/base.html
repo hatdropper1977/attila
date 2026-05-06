@@ -23,6 +23,11 @@
   <meta name="generator" content="Pelican" />
   {% block canonical_url %}<link href="{{ SITEURL }}/" rel="canonical" />{% endblock canonical_url %}
 
+  <!-- NOINDEX -->
+  {% if article and article.metadata.get('noindex', '').lower() == 'true' %}
+<meta name="robots" content="noindex,follow">
+{% endif %}
+
   <!-- Feed -->
   {% for name,link in SOCIAL if name.lower() in ['rss', 'rss-square', 'feed'] %}
       <link href="{{ link }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
